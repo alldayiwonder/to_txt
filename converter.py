@@ -1,4 +1,4 @@
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE,call
 from docx import opendocx, getdocumenttext
 import os 
 #http://stackoverflow.com/questions/5725278/python-help-using-pdfminer-as-a-library
@@ -12,7 +12,7 @@ class Converter:
     def __init__(self):
         pass
         
-    def txt_from_excel(self,file_path):
+    def csv_from_excel(self,file_path):
         csv_name = file_path.split("/")[-1].split(".")[0]+".txt"
         wb = xlrd.open_workbook(file_path)
         sh = wb.sheet_by_name('Sheet1')
@@ -25,6 +25,10 @@ class Converter:
             text += rownum
         your_csv_file.close()
         return text
+
+    def txt_from_csv(self,file_path):
+        txt = file_path.split(".")[0]+".txt"
+        call(["mv",file_path,txt])
 
     def convert_pdf_to_txt(self,filename,path):
         rsrcmgr = PDFResourceManager()
@@ -79,7 +83,10 @@ class Converter:
         elif filename[-4:] == ".pdf":
             return self.convert_pdf_to_txt(filename,file_path)
         elif filename[-4:] == ".xlsx":
-            return self.csv_from_excel(file_path)
+            self.csv_from_excel(file_path)
+            csv = file_path.split(".")[0]+".txt"
+            print csv
+            self.txt_from_csv(csv)
 
 #path_xlsx = os.path.realpath("thing.xlsx")
 #print document_to_text("thing.xlsx", path_xlsx)
