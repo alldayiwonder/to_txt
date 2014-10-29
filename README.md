@@ -18,6 +18,7 @@ sudo python setup.py install
 xlrd:
 
 git clone https://github.com/python-excel/xlrd
+
 sudo python setup.py install
 
 #future plans:
