@@ -5,8 +5,11 @@ to_txt is a command line tool that converts pdf, xlsx, docx, odt, and doc file t
 #dependencies:
 
 antiword: sudo apt-get install antiword
+
 odt2txt: sudo apt-get install odt2txt
+
 pdfminer: sudo pip install pdfminer
+
 python-docx: 
 
 git clone https://github.com/mikemaccana/python-docx  
