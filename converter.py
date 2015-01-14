@@ -1,6 +1,6 @@
 from subprocess import Popen, PIPE,call
-from docx import opendocx, getdocumenttext
-import os 
+# from docx import opendocx, getdocumenttext
+import os
 #http://stackoverflow.com/questions/5725278/python-help-using-pdfminer-as-a-library
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
